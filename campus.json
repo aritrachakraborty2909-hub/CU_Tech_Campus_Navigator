@@ -19,7 +19,7 @@
     "NewBuilding1": "New Building 1",
     "LiftArea": "Lift Area",
     "CSE_Lab": "CSE Laboratory",
-    "CSE_Reflxon": "CSE Reflexon Room",
+    "CSE_Reflexon": "CSE Reflexon Room",
     "CSE_Seminar": "CSE AKC Seminar Hall"
   },
   "connections": [
@@ -50,6 +50,6 @@
     {"from": "Tower2_Rear", "to": "LiftArea", "weight": 7},
     {"from": "LiftArea", "to": "CSE_Lab", "weight": 12},
     {"from": "CSE_Lab", "to": "CSE_Seminar", "weight": 7},
-    {"from": "CSE_Reflxon", "to": "CSE_Seminar", "weight": 10}
+    {"from": "CSE_Reflexon", "to": "CSE_Seminar", "weight": 10}
   ]
 }

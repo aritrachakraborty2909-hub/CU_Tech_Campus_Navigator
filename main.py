@@ -16,8 +16,8 @@ def main():
 
     display_locations(campus.nodes)
 
-    start = input("Enter starting location code (e.g., G1): ").strip()
-    goal = input("Enter destination location code (e.g., Library): ").strip()
+    start = input("Enter starting location code: ").strip()
+    goal = input("Enter destination location code: ").strip()
 
     if start not in campus.nodes or goal not in campus.nodes:
         print("\nInvalid selection. Please use valid key codes.")
