@@ -1,7 +1,7 @@
 import json
 import heapq
 
-CSE_LOCATIONS = {"CSE_Lab", "CSE_Reflxon", "CSE_Seminar"}
+CSE_LOCATIONS = {"CSE_Lab", "CSE_Reflexon", "CSE_Seminar"}
 
 class CampusMap:
     def __init__(self, json_path="campus.json"):
@@ -17,10 +17,7 @@ class CampusMap:
             self.adj[v].append((u, w))
 
     def get_heuristic(self, node, goal):
-        """
-        Calculates h(n) purely from approximate distances/weights.
-        Pre-computes unconstrained shortest path distance to goal node.
-        """
+        """Pure unconstrained shortest path distance for h(n)."""
         if node == goal:
             return 0
 
@@ -41,18 +38,20 @@ class CampusMap:
                     distances[neighbor] = curr_d + weight
                     heapq.heappush(pq, (distances[neighbor], neighbor))
 
-        return distances[goal]
+        return distances[goal] if distances[goal] != float("inf") else 0
 
     def is_valid_transition(self, current_node, next_node, in_cse_zone):
         """
-        Enforces Part 7 CSE Routing Rules.
+        Part 7 Rule:
+        1. If already inside the CSE zone, you can ONLY move to another CSE location or exit to Lift Area.
+        2. You CANNOT jump into a CSE location directly from general campus (must go through Lift Area).
         """
         if in_cse_zone:
-            if next_node in CSE_LOCATIONS or next_node == "LiftArea":
-                return True
-            return False
+            # Inside CSE zone: allowed next nodes are CSE rooms or LiftArea (to exit)
+            return next_node in CSE_LOCATIONS or next_node == "LiftArea"
 
+        # Outside CSE zone: direct jumps into CSE rooms are blocked unless you are at LiftArea
         if next_node in CSE_LOCATIONS:
-            return False
+            return current_node == "LiftArea"
 
         return True

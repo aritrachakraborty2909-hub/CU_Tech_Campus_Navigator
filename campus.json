@@ -41,6 +41,7 @@
     {"from": "Parking", "to": "Tower2_Rear", "weight": 6},
     {"from": "Tower2_Rear", "to": "Library", "weight": 6},
     {"from": "Tower2_Front", "to": "LiftArea", "weight": 10},
+    {"from": "Library", "to": "LiftArea", "weight": 2},
     {"from": "CRNN", "to": "Auditorium", "weight": 7},
     {"from": "CRNN", "to": "GardenArea", "weight": 11},
     {"from": "GardenArea", "to": "NewBuilding2", "weight": 9},
